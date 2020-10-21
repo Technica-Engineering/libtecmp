@@ -23,4 +23,5 @@ cmake ..
 # License
 
 Copyright (c) 2020 Technica Engineering GmbH
+
 GNU General Public License v3.0 or later
