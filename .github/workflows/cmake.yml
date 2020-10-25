@@ -19,10 +19,21 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Conan
+    
+    - name: Install (ubuntu)
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        sudo pip install wheel
+        sudo pip install conan
+        
+    - name: Install (windows/macos)
+      if: matrix.os == 'ubuntu-latest'
       run: |
         pip install wheel
         pip install conan
+    
+    - name: Conan
+      run: |
         conan remote add public-conan https://api.bintray.com/conan/bincrafters/public-conan
         conan install -s build_type=${{env.BUILD_TYPE}} conanfile.txt
 
