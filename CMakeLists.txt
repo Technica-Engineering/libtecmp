@@ -12,9 +12,6 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     include(conanbuildinfo.cmake)
     conan_basic_setup(TARGETS)
 
-    # Let's nicely support folders in IDEs
-    set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-
     # The executable code is here
     add_subdirectory(apps)
 
