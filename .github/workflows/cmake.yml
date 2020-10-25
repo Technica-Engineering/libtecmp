@@ -20,7 +20,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Conan
-      run: >
+      run: |
         pip install conan
         conan remote add public-conan https://api.bintray.com/conan/bincrafters/public-conan
         conan install -s build_type=${{env.BUILD_TYPE}} conanfile.txt
