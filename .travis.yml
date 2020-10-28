@@ -1,0 +1,23 @@
+language: c
+
+arch:
+  - amd64
+  - arm64
+  - ppc64le
+  - s390x
+
+compiler:
+  - gcc
+  - clang
+
+install:
+  - pip install conan
+  - conan remote add public-conan https://api.bintray.com/conan/bincrafters/public-conan
+  - conan install -s build_type=${{env.BUILD_TYPE}} conanfile.txt
+
+script:
+  - cmake -E make_directory build
+  - cd build
+  - cmake .. -DCMAKE_BUILD_TYPE=Release
+  - cmake --build . --config Release
+  - ctest -C Release --output-on-failure
