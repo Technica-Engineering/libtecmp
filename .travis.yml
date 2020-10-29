@@ -11,8 +11,7 @@ compiler:
   - clang
 
 install:
-  - sudo apt-get update && sudo apt-get install -y cmake
-  - cmake --version
+  - sudo apt-get remove cmake
   - sudo pip install --upgrade pip
   - sudo pip install cmake
   - sudo pip install conan
