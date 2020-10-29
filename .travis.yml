@@ -10,11 +10,8 @@ compiler:
   - gcc
   - clang
 
-before_install:
-  - sudo apt-get update
-  - sudo apt-get -y install cmake
-
 install:
+  - pip install cmake
   - pip install conan
   - conan remote add public-conan https://api.bintray.com/conan/bincrafters/public-conan
   - conan install -s build_type=Release conanfile.txt
