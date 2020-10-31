@@ -11,9 +11,12 @@ compiler:
   - clang
 
 install:
-  - sudo apt-get remove cmake
   - sudo pip install --upgrade pip
+  
   - sudo pip install cmake
+  - alias cmake='python -m cmake'
+  - cmake --version
+  
   - sudo pip install conan
   - conan remote add public-conan https://api.bintray.com/conan/bincrafters/public-conan
   - conan install -s build_type=Release conanfile.txt
