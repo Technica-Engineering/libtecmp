@@ -11,13 +11,10 @@ compiler:
   - clang
 
 install:
-  - pip install scikit-build
-  - pip install cmake
-  - shopt -s expand_aliases
-  - alias cmake='python -m cmake'
+  - pip install --user scikit-build cmake conan
+  - export PATH=~/.local/bin/:$PATH
   - cmake --version
   
-  - sudo pip install conan
   - conan remote add public-conan https://api.bintray.com/conan/bincrafters/public-conan
   - conan install -s build_type=Release conanfile.txt
 
