@@ -1,3 +1,6 @@
+![](https://img.shields.io/github/workflow/status/Technica-Engineering/libtecmp/CMake)
+![](https://img.shields.io/github/license/Technica-Engineering/libtecmp)
+
 # LIBTECMP
 
 This library is intended for decoding TECMP packets and extracting the
