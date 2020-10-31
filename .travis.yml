@@ -11,9 +11,9 @@ compiler:
   - clang
 
 install:
-  - sudo pip install --upgrade pip
-  
-  - sudo pip install cmake
+  - pip install scikit-build
+  - pip install cmake
+  - shopt -s expand_aliases
   - alias cmake='python -m cmake'
   - cmake --version
   
