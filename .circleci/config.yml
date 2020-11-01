@@ -1,0 +1,16 @@
+version: 2.1
+
+# Orchestrate or schedule a set of jobs
+workflows:
+  build:
+    jobs:
+      - linux-arm64
+
+jobs:
+  linux-arm64:
+    docker:
+      - image: dockcross/linux-arm64
+    steps:
+      - checkout
+      - run: cmake -Bbuild -H. -GNinja
+      - run: ninja -Cbuild
