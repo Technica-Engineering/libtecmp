@@ -12,5 +12,12 @@ jobs:
       - image: dockcross/linux-arm64
     steps:
       - checkout
-      - run: cmake -Bbuild -H. -GNinja
-      - run: ninja -Cbuild
+      - run: |
+          conan remote add public-conan https://api.bintray.com/conan/bincrafters/public-conan
+          conan install conanfile.txt
+      - run: |
+          cmake -E make_directory build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          cd build
+          cmake --build . --config Release
+          ctest -C Release --output-on-failure
