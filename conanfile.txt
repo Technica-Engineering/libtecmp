@@ -1,6 +1,6 @@
 
 [requires]
-pcapplusplus/20.08@bincrafters/stable
+pcapplusplus/19.12@bincrafters/stable
 
 [generators]
 cmake
