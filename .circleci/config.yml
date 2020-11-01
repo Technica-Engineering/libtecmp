@@ -13,9 +13,6 @@ jobs:
     steps:
       - checkout
       - run: |
-          conan remote add public-conan https://api.bintray.com/conan/bincrafters/public-conan
-          conan install conanfile.txt
-      - run: |
           cmake -E make_directory build
           cd build
           cmake .. -DCMAKE_BUILD_TYPE=Release

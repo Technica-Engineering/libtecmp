@@ -22,31 +22,20 @@ jobs:
     
     - name: Install (ubuntu)
       if: matrix.os == 'ubuntu-latest'
-      run: |
-        sudo pip install wheel
-        sudo pip install conan
+      run: sudo pip install wheel conan
         
     - name: Install (windows/macos)
       if: matrix.os != 'ubuntu-latest'
-      run: |
-        pip install wheel
-        pip install conan
-    
-    - name: Conan
-      run: |
-        conan remote add public-conan https://api.bintray.com/conan/bincrafters/public-conan
-        conan install -s build_type=${{env.BUILD_TYPE}} --build missing conanfile.txt
+      run: pip install wheel conan
 
     - name: Create Build Environment
       run: cmake -E make_directory build
 
-    - name: Configure CMake
-      working-directory: build
-      run: cmake .. -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
-
     - name: Build
       working-directory: build
-      run: cmake --build . --config ${{env.BUILD_TYPE}}
+      run: |
+        cmake .. -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+        cmake --build . --config ${{env.BUILD_TYPE}}
 
     - name: Test
       working-directory: build
