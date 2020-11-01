@@ -17,7 +17,7 @@ jobs:
           conan install conanfile.txt
       - run: |
           cmake -E make_directory build
-          cmake .. -DCMAKE_BUILD_TYPE=Release
           cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
           cmake --build . --config Release
           ctest -C Release --output-on-failure
