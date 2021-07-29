@@ -77,6 +77,11 @@ int tecmp_next(
 
 	int32_t data_offset = h2_offset + TECMP_H2_SIZE;
 
+	// Possible Ethernet padding
+	if (!header->length) {
+		return ENODATA;
+	}
+
 	// Data overflow raw_frame
 	if (raw_frame_size < data_offset + header->length) {
 		return EINVAL;
