@@ -55,7 +55,7 @@ int tecmp_next(
 	// VLAN ethertypes
 	if ((ether == 0x8100) || (ethertype == 0x88A8) || (ethertype == 0x9100)) {
 		uint32_t skip = ETH_SIZE + 2;
-		return tecmp_nect(raw_frame + skip, raw_frame_size - skip, iterator, header, data);
+		return tecmp_next(raw_frame + skip, raw_frame_size - skip, iterator, header, data);
 	}
 	// Ethertype mismatch
 	if (!(ether == 0x2090 || ether == 0x99FE)) {
