@@ -2,12 +2,12 @@ cmake_minimum_required(VERSION 3.17)
 
 # Project name and a few useful settings. Other commands can pick up the results
 project(LIBTECMP
-    VERSION 0.1
+    VERSION 0.2
     DESCRIPTION "TECMP Library"
 )
 
 # Only do these if this is the main project, and not if it is included through add_subdirectory
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)#
 
     include(conanbuildinfo.cmake)
     conan_basic_setup(TARGETS)
