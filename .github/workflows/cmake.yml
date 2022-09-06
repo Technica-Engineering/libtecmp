@@ -31,11 +31,6 @@ jobs:
       run: |
         pip install wheel
         pip install conan
-    
-    - name: Conan
-      run: |
-        conan remote add public-conan https://api.bintray.com/conan/bincrafters/public-conan
-        conan install -s build_type=${{env.BUILD_TYPE}} --build missing conanfile.txt
 
     - name: Create Build Environment
       run: cmake -E make_directory build
