@@ -13,9 +13,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
+          # TODO: ubuntu and macos CI
+          # - os: ubuntu-latest
+          # - os: macos-latest
           - os: windows-latest
-          - os: macos-latest
+
     steps:
     - uses: actions/checkout@v2
     
