@@ -13,9 +13,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # TODO: ubuntu and macos CI
-          # - os: ubuntu-latest
-          # - os: macos-latest
+          - os: ubuntu-latest
+          - os: macos-latest
           - os: windows-latest
 
     steps:
