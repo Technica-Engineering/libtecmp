@@ -59,7 +59,6 @@ int tecmp_next(
 	}
 	// Ethertype mismatch
 	if (!(ether == 0x2090 || ether == 0x99FE)) {
-		std::cout<<"Ether type "<<ether<<" is invalid."<<std::endl;
 		return EINVAL;
 	}
 
