@@ -54,11 +54,14 @@ int tecmp_next(
 
 	// VLAN ethertypes
 	if ((ether == 0x8100) || (ether == 0x88A8) || (ether == 0x9100)) {
+		std::cout<<"DEBUG: VLAN frame found."<<std::endl;
 		uint32_t skip = ETH_SIZE + 2;
+		std::cout<<"DEBUG: Skipping "<<skip<<" bytres"<<std::endl;
 		return tecmp_next(raw_frame + skip, raw_frame_size - skip, iterator, header, data);
 	}
 	// Ethertype mismatch
 	if (!(ether == 0x2090 || ether == 0x99FE)) {
+		std::cout<<"Ether type "<<ether<<" is invalid."<<std::endl;
 		return EINVAL;
 	}
 
