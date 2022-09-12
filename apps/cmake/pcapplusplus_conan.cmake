@@ -22,3 +22,5 @@ conan_cmake_install(PATH_OR_REFERENCE .
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_BINARY_DIR}/apps")
 
 find_package(pcapplusplus REQUIRED)
+
+add_library(pcapplusplus ALIAS pcapplusplus::pcapplusplus)
