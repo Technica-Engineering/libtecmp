@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.17)
 
 # Project name and a few useful settings. Other commands can pick up the results
 project(LIBTECMP
-    VERSION 0.1
+    VERSION 0.2
     DESCRIPTION "TECMP Library"
 )
 
