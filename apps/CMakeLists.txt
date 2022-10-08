@@ -1,12 +1,24 @@
+cmake_minimum_required(VERSION 3.9)
+
+list(APPEND CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR})
+
+if(NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/conan.cmake")
+  file(DOWNLOAD "https://raw.githubusercontent.com/conan-io/cmake-conan/0.18.1/conan.cmake"
+                "${CMAKE_CURRENT_BINARY_DIR}/conan.cmake")
+endif()
+
+include(${CMAKE_CURRENT_BINARY_DIR}/conan.cmake)
+
+conan_cmake_run(
+    REQUIRES pcapplusplus/22.05
+    GENERATORS CMakeDeps
+    BUILD missing
+)
 
 add_executable(tecmp_app "app.cpp")
+find_package(pcapplusplus REQUIRED CONFIG)
 
-cmake_policy(SET CMP0135 NEW)
-
-include(cmake/libpcap.cmake)
-include(cmake/pcapplusplus.cmake)
-
-target_link_libraries(tecmp_app PRIVATE tecmp_library pcapplusplus)
+target_link_libraries(tecmp_app PRIVATE tecmp_library pcapplusplus::pcapplusplus)
 target_compile_features(tecmp_app PRIVATE cxx_std_17)
 
 add_test(
