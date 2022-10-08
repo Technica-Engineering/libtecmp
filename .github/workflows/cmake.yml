@@ -20,7 +20,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v4
-    - run: pip install wheel conan
+    - run: pip3 install wheel conan
 
     - name: Create Build Environment
       run: cmake -E make_directory build
