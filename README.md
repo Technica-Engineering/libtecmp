@@ -25,8 +25,6 @@ cmake ..
 
 # License
 
-Copyright (c) 2020 Technica Engineering GmbH
+Copyright (c) 2020-2023 Technica Engineering GmbH
 
-GNU General Public License v3.0 or later
-
-If you want to get a non-GPL version of this lib, please get in touch with technicalsales(at)technica-engineering.de or lars.voelker(at)technica-engineering.de
+GNU Lesser General Public License v3.0 or later
