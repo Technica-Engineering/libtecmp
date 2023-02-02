@@ -1,6 +1,6 @@
 /*
 	Copyright (c) 2020 Technica Engineering GmbH
-	GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
+	GNU Lesser General Public License v3.0 or later (see LICENSE or https://www.gnu.org/licenses/lgpl-3.0.txt)
 */
 
 #pragma once
