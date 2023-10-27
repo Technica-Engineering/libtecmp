@@ -106,19 +106,6 @@ int main(int argc, char* argv[]) {
 
 				RawPacket newP;
 				timeval time = tecmp_get_timeval(header);
-
-				//if (header.data_type == TECMP_DATA_ETHERNET)
-				//{
-				//	// Ethernet Frame, write it back to the PCAP file without TECMP header
-				//	newP = RawPacket(data, header.length, time, false);
-				//}
-				//else
-				//{
-					// Print Status to stdout
-				//print_status(header, data);
-
-				// Write back the frame depacketized
-
 				// Capture Module MTU = 1600
 				uint8_t buffer[1600];
 
@@ -141,7 +128,6 @@ int main(int argc, char* argv[]) {
 				res = tecmp_next(p.getRawData(), p.getRawDataLen(), &iterator, &header, &data);
 			}
 		}
-	}
 
 	reader->close();
 	writer.close();
