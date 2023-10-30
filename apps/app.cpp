@@ -78,7 +78,6 @@ int main(int argc, char* argv[]) {
 
 
 				newP = RawPacket(buffer, header.length + head_size + hdr_size, time, false);
-				//}
 
 				// Write packet back
 				writer.writePacket(newP);
@@ -88,9 +87,9 @@ int main(int argc, char* argv[]) {
 			}
 		}
 
-		reader->close();
-		writer.close();
+	reader->close();
+	writer.close();
 
-		// free reader memory because it was created by IFileReaderDevice::getReader()
-		delete reader;
-	}
+	// free reader memory because it was created by IFileReaderDevice::getReader()
+	delete reader;
+}
