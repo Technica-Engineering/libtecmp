@@ -12,47 +12,6 @@
 using namespace pcpp;
 using namespace std;
 
-
-void print_status(tecmp_header header, uint8_t* data) {
-	switch (header.message_type)
-	{
-	case TECMP_TYPE_CM_STATUS:
-	{
-		tecmp_cm_status cm_status;
-		tecmp_get_cm_status(header, data, &cm_status);
-		auto v = cm_status.vendor;
-		printf("CM %u:\n", cm_status.cm_id);
-		printf("\t Version: v%u.%u.%u\n", v.sw_version_major, v.sw_version_minor, v.sw_version_patch);
-		break;
-	}
-
-	case TECMP_TYPE_BUS_STATUS:
-	{
-		int32_t iterator = 0;
-		tecmp_bus_status bus_status;
-		while (!tecmp_next_bus_status(header, data, &iterator, &bus_status)) {
-			printf("CM %u: %x\n", bus_status.cm_id, bus_status.channel_id);
-			printf("\t Messages Total: %u\n", bus_status.messages_total);
-			printf("\t Errors Total: %u\n", bus_status.errors_total);
-			printf("\t Link Status: %u\n", bus_status.vendor.link_status);
-			printf("\t Link Quality: %u\n", bus_status.vendor.link_quality);
-
-			auto linkup_time = bus_status.vendor.linkup_time;
-			if (linkup_time == 0) {
-				printf("\t Linkup Time: no linkup detected yet\n");
-			}
-			else if (linkup_time == 0xffff) {
-				printf("\t Linkup Time: no linkup detected and timeout occurred\n");
-			}
-			else {
-				printf("\t Linkup Time: %ums\n", bus_status.vendor.linkup_time);
-			}
-		}
-		break;
-	}
-	}
-}
-
 /*
  * Sample app to write packetized TECMP into depacketized TECMP
  * Also removes the TECMP header from Ethernet Data Frames
@@ -129,9 +88,9 @@ int main(int argc, char* argv[]) {
 			}
 		}
 
-	reader->close();
-	writer.close();
+		reader->close();
+		writer.close();
 
-	// free reader memory because it was created by IFileReaderDevice::getReader()
-	delete reader;
-}
+		// free reader memory because it was created by IFileReaderDevice::getReader()
+		delete reader;
+	}
