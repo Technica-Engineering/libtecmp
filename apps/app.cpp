@@ -86,7 +86,7 @@ int main(int argc, char* argv[]) {
 				res = tecmp_next(p.getRawData(), p.getRawDataLen(), &iterator, &header, &data);
 			}
 		}
-
+	}
 	reader->close();
 	writer.close();
 
