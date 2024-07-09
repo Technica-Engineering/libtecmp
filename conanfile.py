@@ -20,6 +20,8 @@ class TecmpAppRecipe(ConanFile):
     # Sources are located in the same place as this recipe, copy them to the recipe
     exports_sources = "CMakeLists.txt", "src/*"
     
+    package_folder = "../dist"
+    
     def requirements(self):
         self.requires("pcapplusplus/23.09")
 
@@ -36,6 +38,7 @@ class TecmpAppRecipe(ConanFile):
         cmake = CMake(self)
         cmake.configure()
         cmake.build()
+        cmake.install()
 
     def package(self):
         cmake = CMake(self)

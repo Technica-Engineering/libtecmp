@@ -31,12 +31,6 @@ jobs:
     - name: Build
       run: conan build . --build missing -s:a=build_type=${{env.BUILD_TYPE}}
 
-    - name: Package
-      working-directory: build
-      run: |
-        cmake --install . --prefix ../dist
-
-
     - name: Test
       working-directory: build
       run: |
