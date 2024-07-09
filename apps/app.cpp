@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include <errno.h>
 #include <tecmp/tecmp.h>
-#include "PcapFileDevice.h"
+#include "pcapplusplus/PcapFileDevice.h"
 #include <time.h>
 
 using namespace pcpp;
@@ -86,7 +86,7 @@ int main(int argc, char* argv[]) {
 				res = tecmp_next(p.getRawData(), p.getRawDataLen(), &iterator, &header, &data);
 			}
 		}
-
+	}
 	reader->close();
 	writer.close();
 

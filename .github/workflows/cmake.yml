@@ -15,23 +15,21 @@ jobs:
         include:
           - os: windows-latest
           - os: ubuntu-latest
-          - os: macos-11
+          - os: macos-12
 
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v4
-    - run: pip3 install wheel conan==1.61.0
+    - run: |
+        pip3 install wheel conan==2.5.0
+        conan --version
+        cmake --version
 
-    - name: Create Build Environment
-      run: cmake -E make_directory build
-
-    - name: Configure CMake
-      working-directory: build
-      run: cmake .. -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+    - name: Create conan profile
+      run: conan profile detect
 
     - name: Build
-      working-directory: build
-      run: cmake --build . --config ${{env.BUILD_TYPE}}
+      run: conan build . --build missing -s:a=build_type=${{env.BUILD_TYPE}}
 
     - name: Test
       working-directory: build
