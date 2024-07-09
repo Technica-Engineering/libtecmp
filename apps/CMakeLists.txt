@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.17)
 
 add_executable(tecmp_app "app.cpp")
-find_package(pcapplusplus REQUIRED)
+find_package(PcapPlusPlus REQUIRED)
 
 target_link_libraries(tecmp_app PUBLIC tecmp_library PcapPlusPlus::PcapPlusPlus)
 target_compile_features(tecmp_app PUBLIC cxx_std_17)
