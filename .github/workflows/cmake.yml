@@ -20,7 +20,7 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
     - run: |
-        pip3 install wheel conan==2.5.0
+        pipx install conan
         conan --version
         cmake --version
 
