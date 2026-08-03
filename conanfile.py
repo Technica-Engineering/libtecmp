@@ -23,7 +23,7 @@ class TecmpAppRecipe(ConanFile):
     package_folder = "../dist"
 
     def requirements(self):
-        self.requires("pcapplusplus/25.05")
+        self.requires("pcapplusplus/26.07")
 
     def layout(self):
         cmake_layout(self)
