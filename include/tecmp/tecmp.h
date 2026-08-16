@@ -38,6 +38,10 @@
 
 #define TECMP_DATA_ETHERNET		0x0080
 
+// FlexRay-specific values in the TECMP header data_flags field
+#define TECMP_FR_WUS			0x0008 // Wake-up Symbol: carries no payload, Length is set to 0
+#define TECMP_FR_CAS			0x0020 // Collision Avoidance Symbol
+
 
 // TECMP CM IDs
 #define	TECMP_LIN_COMBO_0	48

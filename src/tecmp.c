@@ -84,6 +84,18 @@ int tecmp_next(
 
 	// Possible Ethernet padding
 	if (!header->length) {
+		// A zero Length field is also valid for FlexRay wake-up (WUS) and
+		// collision-avoidance (CAS) symbols, which carry no payload. Treat
+		// them as a valid frame with an empty payload instead of signalling
+		// ENODATA, so the trailing Ethernet padding does not hide them.
+		if (header->data_type == TECMP_DATA_FLEXRAY &&
+			(header->data_flags & (TECMP_FR_WUS | TECMP_FR_CAS))) {
+			*data = (uint8_t*)raw_frame + data_offset;
+			if (iterator != NULL) {
+				*iterator = data_offset;
+			}
+			return 0;
+		}
 		return ENODATA;
 	}
 
