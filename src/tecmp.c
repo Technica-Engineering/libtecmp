@@ -84,6 +84,16 @@ int tecmp_next(
 
 	// Possible Ethernet padding
 	if (!header->length) {
+		// A zero Length field is also valid for FlexRay symbols (wake-up and
+		// collision-avoidance symbols), which carry no payload. Treat them as a
+		// valid frame with an empty payload instead of signalling ENODATA.
+		if (header->data_type == TECMP_DATA_FLEXRAY) {
+			*data = (uint8_t*)raw_frame + data_offset;
+			if (iterator != NULL) {
+				*iterator = data_offset;
+			}
+			return 0;
+		}
 		return ENODATA;
 	}
 
